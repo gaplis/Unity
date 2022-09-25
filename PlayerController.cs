@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Run speed player")]
     public float runSpeed = 15f;
+    
+    [Header("Run speed left and right player")]
+    public float runLefRightSpeed = 12f;
 
     [Header("Force jump")]
     public float jumpPower = 200f;
@@ -18,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody rb;
 
-    private void Update()
+    private void FixedUpdate()
     {
         GetInput();
     }
@@ -39,21 +42,14 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.S))
         {
-            if(Input.GetKey(KeyCode.LeftShift))
-            {
-                transform.localPosition += -transform.forward * runSpeed * Time.deltaTime;
-            }
-            else
-            {
                 transform.localPosition += -transform.forward * speed * Time.deltaTime;
-            }
         }
 
         if(Input.GetKey(KeyCode.A))
         {
             if(Input.GetKey(KeyCode.LeftShift))
             {
-                transform.localPosition += -transform.right * runSpeed * Time.deltaTime;
+                transform.localPosition += -transform.right * runLefRightSpeed * Time.deltaTime;
             }
             else
             {
@@ -65,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.LeftShift))
             {
-                transform.localPosition += transform.right * runSpeed * Time.deltaTime;
+                transform.localPosition += transform.right * runLefRightSpeed * Time.deltaTime;
             }
             else
             {
